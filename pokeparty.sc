@@ -73,7 +73,7 @@ report_timer() ->
   current_timestamp = tick_time();
   time_elapsed = current_timestamp - global_timestamp;
   ticks_left = get_countdown() - time_elapsed;
-  print(format(' Ticks before the next PokeParty:' + ' ', 'd' + ' ' + ticks_left));
+  print(format(' Ticks before the next PokeParty: ', str('d %d', ticks_left)));
 );
 
 subscribe() -> 
