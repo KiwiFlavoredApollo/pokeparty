@@ -17,9 +17,6 @@ global_timestamp = 0;
 
 pokeparty() ->
 (
-  run('say It\'s PokeParty Time!');
-  run('say 구독하기 \/pokeparty subscribe');
-
   for(global_subscribers, 
     give_random_pokemon(_);
   );
@@ -34,7 +31,9 @@ give_random_pokemon(player) ->
       run(command);
 
   is_success_run = error_message == null;
+  pokeparty_message = 'It\'s PokeParty Time!';
   if(is_success_run,
+    put(output_message, 0, pokeparty_message, 'insert');
     output_message_string = join('\n', output_message);
     print(player, output_message_string);
   , 
