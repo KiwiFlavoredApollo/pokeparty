@@ -1,10 +1,9 @@
 __config() -> 
 {
-  'command_permission' -> 'ops',
+  'scope' -> 'global',
+  'command_permission' -> 'all',
   'commands' -> 
   {
-    '' -> 'pokeparty',
-    'timer reset' -> 'reset_timer',
     'timer report' -> 'report_timer',
     'subscribe' -> 'subscribe',
     'subscribe list' -> 'print_subscriber_list',
@@ -78,7 +77,7 @@ subscribe() ->
   player_name = query(player(), 'name');
   global_subscribers += player_name;
 
-  write_file('subscribers', 'json', global_subscribers);
+  write_file('pokeparty-subscribers', 'shared_json', global_subscribers);
   print('Successfully subscribed to PokeParty');
 );
 
@@ -92,7 +91,7 @@ unsubscribe() ->
   player_name = query(player(), 'name');
   global_subscribers = filter(global_subscribers, _ != player_name);
 
-  write_file('subscribers', 'json', global_subscribers);
+  write_file('pokeparty-subscribers', 'shared_json', global_subscribers);
   print('Successfully unsubscribed to PokeParty');
 );
 
@@ -118,7 +117,7 @@ get_countdown() ->
 __on_start() ->
 (
   global_config = read_file('config', 'json');
-  global_subscribers = read_file('subscribers', 'json');
+  global_subscribers = read_file('pokeparty-subscribers', 'shared_json');
   reset_timer();
 );
 
