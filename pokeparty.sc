@@ -33,7 +33,7 @@ give_random_pokemon(player) ->
   [success_count, output_message, error_message] = 
       run(command);
 
-  is_success_run = success_count != 0;
+  is_success_run = error_message == null;
   if(is_success_run,
     output_message_string = join('\n', output_message);
     print(player, output_message_string);
