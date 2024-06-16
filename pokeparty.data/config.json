@@ -1,0 +1,16 @@
+{
+  "timer": 
+  {
+    "countdown": 24000,
+    "multiplier": 0.01 
+  },
+  "level": 
+  {
+    "base": 20,
+    "variance": 7
+  },
+  "shiny":
+  {
+    "probability": 0.01
+  }
+}
