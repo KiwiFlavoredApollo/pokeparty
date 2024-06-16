@@ -17,7 +17,8 @@ global_timestamp = 0;
 
 pokeparty() ->
 (
-  for(global_subscribers, 
+  subscribers_online = filter(global_subscribers, player(_) != null);
+  for(subscribers_online, 
     give_random_pokemon(_);
   );
 );
