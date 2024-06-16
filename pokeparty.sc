@@ -29,8 +29,17 @@ give_random_pokemon(player) ->
 (
   level = get_random_level();
   shiny = if(is_shiny(), 'shiny', '');
+  command = str('givepokemonother %s random level=%d %s', player, level, shiny);
   [success_count, output_message, error_message] = 
-      run('givepokemonother' + ' ' + player + ' ' + 'random' + ' ' + 'level=' + level + ' ' + shiny);
+      run(command);
+
+  is_success_run = success_count != 0;
+  if(is_success_run,
+    output_message_string = join('\n', output_message);
+    print(player, output_message_string);
+  , 
+    print(player, error_message);
+  );
 );
 
 is_shiny() ->
