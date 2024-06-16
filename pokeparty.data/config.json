@@ -2,7 +2,7 @@
   "timer": 
   {
     "countdown": 24000,
-    "multiplier": 0.01 
+    "multiplier": 1 
   },
   "level": 
   {
